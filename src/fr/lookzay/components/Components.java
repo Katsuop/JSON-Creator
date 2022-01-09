@@ -3,8 +3,8 @@ package fr.lookzay.components;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Font;
@@ -20,6 +20,7 @@ public class Components {
     private TextField textField;
     private Button button;
     private Hyperlink hyperlink;
+    private CheckBox checkbox;
 
     public void setTextFieldWithLabel (Label label, TextField textField, String text, int x1, int y1, int x2, int y2, int minWidthTextField){
 
@@ -80,6 +81,13 @@ public class Components {
         label.setStyle(css);
     }
 
+    public void setButton(Button button, String text, int x, int y, int minWidth) {
+        this.button = button;
+        button.setText(text);
+        button.setMinWidth(minWidth);
+        button.setLayoutX(x);
+        button.setLayoutY(y);
+    }
     public void setButton(Button button, String text, int x, int y, int minWidth, int minHeight){
         this.button = button;
         button.setText(text);
@@ -117,4 +125,18 @@ public class Components {
             }
         });
     }
+
+    public void setTextField(TextField textField, int x, int y, int minWidth){
+        this.textField = textField;
+        textField.setMinWidth(minWidth);
+        textField.setLayoutY(y);
+        textField.setLayoutX(x);
+    }
+
+    public void setCheckbox(CheckBox checkbox, int x, int y){
+        this.checkbox = checkbox;
+        checkbox.setLayoutY(y);
+        checkbox.setLayoutX(x);
+    }
+
 }

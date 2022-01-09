@@ -1,6 +1,7 @@
 package fr.lookzay.stage;
 
 import fr.lookzay.AlertMain;
+import fr.lookzay.components.Components;
 import fr.lookzay.generator.BlockGenerator;
 import fr.lookzay.value.Infos;
 import javafx.event.ActionEvent;
@@ -18,43 +19,25 @@ import javafx.stage.Stage;
 public class BlockStage {
 
     public void generateStage(Stage primaryStage, Image icon){
-        Label titleBlock = new Label("Block Json Creator");
-        titleBlock.setFont(new Font("Arial", 28));
-        titleBlock.setLayoutX(86);
-        titleBlock.setLayoutY(5);
-        titleBlock.setStyle(Infos.cssTitle);
+        Components components = new Components();
+        Label titleBlock = new Label(), blockNameLabel = new Label(),  textureNameLabel = new Label();
+        TextField blockNameField = new TextField(), textureNameField = new TextField();
+        Button launch = new Button();
 
-        Label blockNameLabel = new Label("Block Name :");
-        blockNameLabel.setFont(new Font("Arial", 12));
-        blockNameLabel.setLayoutX(10);
-        blockNameLabel.setLayoutY(80);
+        components.setLabel(titleBlock, "Block Json Creator", 86, 5, Infos.cssTitle, "Arial", 28);
+        components.setLabel(blockNameLabel, "Block Name :", 10, 86);
+        components.setTextField(blockNameField, 100, 75, 190);
+        components.setLabel(textureNameLabel, "Texture Name :", 10, 120);
+        components.setTextField(textureNameField, 100, 115, 190);
+        components.setButton(launch, "Create", 100, 155, 190);
 
-        TextField blockNameField = new TextField("");
-        blockNameField.setMinWidth(190);
-        blockNameField.setLayoutY(75);
-        blockNameField.setLayoutX(100);
-
-        Label textureNameLabelB = new Label("Texture Name :");
-        textureNameLabelB.setFont(new Font("Arial", 12));
-        textureNameLabelB.setLayoutX(10);
-        textureNameLabelB.setLayoutY(120);
-
-        TextField textureNameFieldB = new TextField("");
-        textureNameFieldB.setMinWidth(190);
-        textureNameFieldB.setLayoutY(115);
-        textureNameFieldB.setLayoutX(100);
-
-        Button launchB = new Button("Create");
-        launchB.setLayoutY(155);
-        launchB.setLayoutX(100);
-        launchB.setMinWidth(190);
-        launchB.setOnAction(new EventHandler<ActionEvent>() {
+        launch.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(ActionEvent event) {
-                if(!(blockNameField.getLength() == 0 || textureNameFieldB.getLength() == 0)){
+                if(!(blockNameField.getLength() == 0 || textureNameField.getLength() == 0)){
                     BlockGenerator.writeBlockstates(blockNameField.getText());
-                    BlockGenerator.writeBlockJson(blockNameField.getText(), textureNameFieldB.getText());
+                    BlockGenerator.writeBlockJson(blockNameField.getText(), textureNameField.getText());
                     AlertMain.alert(Alert.AlertType.INFORMATION, Infos.frameName, "Vos fichiers ont bien été créer !", "Dans : export/models/block  | et |  export/blockstates");
                 } else {
                     AlertMain.alert(Alert.AlertType.ERROR, Infos.frameName, "Erreur !", "Vous devez remplir tous les champs !");
@@ -63,7 +46,7 @@ public class BlockStage {
         });
 
         Group componentsGUI = new Group();
-        componentsGUI.getChildren().addAll(blockNameField, blockNameLabel, titleBlock, textureNameFieldB, textureNameLabelB, launchB);
+        componentsGUI.getChildren().addAll(blockNameField, blockNameLabel, titleBlock, textureNameLabel, textureNameField, launch);
 
         Scene otherScene = new Scene(componentsGUI, 400, 250);
 

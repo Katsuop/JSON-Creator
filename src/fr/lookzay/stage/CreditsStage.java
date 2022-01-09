@@ -26,7 +26,7 @@ public class CreditsStage {
         componentsGUI.getChildren().addAll(titleCredits, textCredits, githubText, hyperlink, discordText);
 
         StageManager stageManager = new StageManager();
-        stageManager.createNewStage(primaryStage, componentsGUI, "Credits", false, icon, 400, 250, 200, 100);
+        stageManager.createNewStage(primaryStage, componentsGUI, "Credits", false, icon, 400, 140, 200, 100);
 
     }
 }

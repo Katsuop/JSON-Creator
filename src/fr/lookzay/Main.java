@@ -22,8 +22,9 @@ public class  Main extends Application {
 
         Group principalComponents = new Group();
         StageManager stageManager = new StageManager();
-        stageManager.createNewStage(primaryStage, principalComponents, Infos.frameName, false, Infos.icon, 500, 300);
         Components components = new Components();
+
+        stageManager.createNewStage(primaryStage, principalComponents, Infos.frameName, false, Infos.icon, 500, 300);
 
         Label title = new Label();
         Button block = new Button(), item = new Button(), credits = new Button(), itemCustom = new Button();
@@ -34,14 +35,14 @@ public class  Main extends Application {
         components.setButton(block, "Block", 260, 140, 100, 40);
         components.setButton(credits, "Credits", 375, 140, 100, 40);
 
-        /*itemCustom.setOnAction(new EventHandler<ActionEvent>() {
+        itemCustom.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(ActionEvent event) {
                 ItemCustomStage itemCustomStage = new ItemCustomStage();
                 itemCustomStage.generateStage(primaryStage, Infos.icon);
             }
-        });*/
+        });
         item.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
