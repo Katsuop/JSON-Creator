@@ -33,9 +33,9 @@ public class ItemGenerator {
             itemDir.mkdirs();
             blockDir.mkdirs();
             blockstatesDir.mkdirs();
-            Main.print("Dossiers vienne d'être générée");
+            //Main.print("Dossiers vienne d'être générée");
         } else {
-            Main.print("Dossiers déjà générée");
+            //Main.print("Dossiers déjà générée");
         }
     }
 
@@ -111,7 +111,7 @@ public class ItemGenerator {
             jw.endObject();
             writer.close();
 
-            Main.print("Fichier " + itemName + "vient d'être générée dans /export/models/item/");
+            //Main.print("Fichier " + itemName + "vient d'être générée dans /export/models/item/");
         }
         catch(IOException e)
         {
